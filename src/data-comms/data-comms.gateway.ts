@@ -1,4 +1,8 @@
-import { SubscribeMessage, WebSocketGateway } from '@nestjs/websockets';
+import {
+	MessageBody,
+	SubscribeMessage,
+	WebSocketGateway,
+} from '@nestjs/websockets';
 import { SessionService } from 'src/session/session.service';
 
 @WebSocketGateway()
@@ -6,7 +10,9 @@ export class DataCommsGateway {
 	constructor(private sessionService: SessionService) {}
 
 	@SubscribeMessage('clientJoin')
-	handleMessage(client: any, payload: any): string {
-		return 'Hello world!';
+	handleMessage(@MessageBody() payload: string) {
+		console.log(JSON.stringify(payload));
+		this.sessionService.controllerJoin('1.2.2.3', payload);
+		return 'OK';
 	}
 }

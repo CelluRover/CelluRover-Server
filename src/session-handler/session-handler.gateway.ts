@@ -3,10 +3,13 @@ import { SessionService } from 'src/session/session.service';
 
 @WebSocketGateway()
 export class SessionHandlerGateway {
-	constructor(private sessionService: SessionService) {}
+	constructor(private sessionService: SessionService) {
+		console.log('bruh');
+	}
 
-	@SubscribeMessage('controllerJoin')
-	handleMessage(client: any, payload: any): string {
-		return 'Hello world!';
+	@SubscribeMessage('createSession')
+	createSession() {
+		let response = this.sessionService.createSession();
+		return response;
 	}
 }
