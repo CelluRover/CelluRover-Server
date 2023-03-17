@@ -6,8 +6,13 @@ import { SessionService } from './session/session.service';
 import { SessionHandlerGateway } from './session-handler/session-handler.gateway';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService, DataCommsGateway, SessionService, SessionHandlerGateway],
+	imports: [],
+	controllers: [AppController],
+	providers: [
+		AppService,
+		DataCommsGateway,
+		SessionService,
+		SessionHandlerGateway,
+	],
 })
 export class AppModule {}

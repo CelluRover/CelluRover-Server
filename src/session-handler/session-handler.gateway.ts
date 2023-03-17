@@ -3,6 +3,8 @@ import {
 	SubscribeMessage,
 	WebSocketGateway,
 } from '@nestjs/websockets';
+import { Socket } from 'net';
+import { IJoin } from 'src/interface/IJoin';
 import { SessionService } from 'src/session/session.service';
 
 @WebSocketGateway()
@@ -17,5 +19,8 @@ export class SessionHandlerGateway {
 		return response;
 	}
 	@SubscribeMessage('join')
-	joinSession(@MessageBody body: string) {}
+	joinSession(@MessageBody() body: string, client) {
+		const response: IJoin = JSON.parse(body);
+		console.log(client);
+	}
 }
