@@ -12,7 +12,7 @@ interface Joiner {
 	iam: IAM;
 }
 
-enum IAM {
+export enum IAM {
 	robot,
 	user,
 }

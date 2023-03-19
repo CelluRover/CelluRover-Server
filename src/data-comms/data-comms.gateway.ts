@@ -5,9 +5,7 @@ import {
 } from '@nestjs/websockets';
 import { SessionService } from 'src/session/session.service';
 
-@WebSocketGateway()
+@WebSocketGateway({ cors: true })
 export class DataCommsGateway {
 	constructor(private sessionService: SessionService) {}
-
-	
 }

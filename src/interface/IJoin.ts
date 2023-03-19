@@ -1,4 +1,4 @@
 export interface IJoin {
-	sockId: string;
-	iam: number;
+	sessionId: string;
+	iam: string;
 }
