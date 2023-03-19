@@ -21,6 +21,7 @@ specifiers:
   jest: 29.3.1
   prettier: ^2.3.2
   reflect-metadata: ^0.1.13
+  run-script-webpack-plugin: ^0.1.1
   rxjs: ^7.2.0
   socket.io: ^4.6.1
   source-map-support: ^0.5.20
@@ -31,6 +32,8 @@ specifiers:
   tsconfig-paths: 4.1.1
   typescript: ^4.7.4
   uuid: ^9.0.0
+  webpack: ^5.76.2
+  webpack-node-externals: ^3.0.0
 
 dependencies:
   '@nestjs/common': 9.3.10_mnr6j2del53muneqly5h4y27ai
@@ -58,13 +61,16 @@ devDependencies:
   eslint-plugin-prettier: 4.2.1_eqzx3hpkgx5nnvxls3azrcc7dm
   jest: 29.3.1_zfha7dvnw4nti6zkbsmhmn6xo4
   prettier: 2.8.4
+  run-script-webpack-plugin: 0.1.1
   source-map-support: 0.5.21
   supertest: 6.3.3
   ts-jest: 29.0.3_hfbqr3rujuziiw7lzul6vua4r4
-  ts-loader: 9.4.2_typescript@4.9.5
+  ts-loader: 9.4.2_a37q6j7dwawz22saey2vgkpwqm
   ts-node: 10.9.1_bdgp3l2zgaopogaavxusmetvge
   tsconfig-paths: 4.1.1
   typescript: 4.9.5
+  webpack: 5.76.2
+  webpack-node-externals: 3.0.0
 
 packages:
 
@@ -1594,7 +1600,7 @@ packages:
       ajv:
         optional: true
     dependencies:
-      ajv: 8.11.0
+      ajv: 8.12.0
     dev: true
 
   /ajv-keywords/3.5.2_ajv@6.12.6:
@@ -4323,6 +4329,11 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /run-script-webpack-plugin/0.1.1:
+    resolution: {integrity: sha512-PrxBRLv1K9itDKMlootSCyGhdTU+KbKGJ2wF6/k0eyo6M0YGPC58HYbS/J/QsDiwM0t7G99WcuCqto0J7omOXA==}
+    engines: {node: '>=14'}
+    dev: true
+
   /rxjs/6.6.7:
     resolution: {integrity: sha512-hTdwr+7yYNIT5n4AMYp85KA6yw2Va0FLa3Rguvbpa4W3I5xynaBZo41cM3XM+4Q6fRMj3sBYIR1VAmZMXYJvRQ==}
     engines: {npm: '>=2.0.0'}
@@ -4766,7 +4777,7 @@ packages:
       yargs-parser: 21.1.1
     dev: true
 
-  /ts-loader/9.4.2_typescript@4.9.5:
+  /ts-loader/9.4.2_a37q6j7dwawz22saey2vgkpwqm:
     resolution: {integrity: sha512-OmlC4WVmFv5I0PpaxYb+qGeGOdm5giHU7HwDDUjw59emP2UYMHy9fFSDcYgSNoH8sXcj4hGCSEhlDZ9ULeDraA==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -4778,6 +4789,7 @@ packages:
       micromatch: 4.0.5
       semver: 7.3.8
       typescript: 4.9.5
+      webpack: 5.76.2
     dev: true
 
   /ts-node/10.9.1_bdgp3l2zgaopogaavxusmetvge:
