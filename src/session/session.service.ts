@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UseFilters } from '@nestjs/common';
 import { WsException } from '@nestjs/websockets';
 import { v4 as uuidv4 } from 'uuid';
+import { WsExceptionFilter } from './WsErrorException';
 
 interface Session {
 	sessionUUID: string;
@@ -61,19 +62,24 @@ export class SessionService {
 			(ses) => ses.sessionUUID == sessionId,
 		);
 		console.log(sessionToJoinIndex);
+
 		//! Write exception later. Using console.log for now.
-		if (sessionToJoinIndex == -1) console.log("Session doesn't exist");
-
-		else if ((await this.hasContoller(sessionToJoinIndex)) && who == IAM.user)
-			console.log('Session controller exceded');
-
-		else if (await this.isRobotAlreadyConnected(sessionToJoinIndex, socketId))
-			console.log('Robot already connected');
-		else {
-			this.session[sessionToJoinIndex].joiners.push({
-				socketId,
-				iam: who,
-			});
-		}
+		if (sessionToJoinIndex == -1)
+			throw new WsException("Session doesn't exist");
+		else if (
+			(await this.hasContoller(sessionToJoinIndex)) &&
+			who == IAM.user
+		)
+			throw new WsException('Session controller exceded');
+		else if (
+			await this.isRobotAlreadyConnected(sessionToJoinIndex, socketId)
+		)
+			throw new WsException(
+				'Robot with same socket id, already connected',
+			);
+		this.session[sessionToJoinIndex].joiners.push({
+			socketId,
+			iam: who,
+		});
 	}
 }
