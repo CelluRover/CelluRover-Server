@@ -28,11 +28,13 @@ export class SessionHandlerGateway {
 	async joinSession(
 		@MessageBody() body: IJoin,
 		@ConnectedSocket() client: Socket,
+		callback: Function,
 	) {
 		await this.sessionService.join(
 			client.id,
 			IAM[body.iam],
 			body.sessionId,
 		);
+		return 'OK';
 	}
 }
